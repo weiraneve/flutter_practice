@@ -28,6 +28,13 @@ class HomePage extends StatelessWidget {
               },
               child: const Text(_goOtherButtonText),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.feed);
+              },
+              child: const Text(_goFeedButtonText),
+            ),
           ],
         ),
       ),
@@ -38,3 +45,4 @@ class HomePage extends StatelessWidget {
 const _homePageTitle = 'Home Page';
 const _goCountButtonText = 'Go to Count Page';
 const _goOtherButtonText = 'Go to Other Page';
+const _goFeedButtonText = 'Go to Feed Page';
