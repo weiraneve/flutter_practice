@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/model/feed_response.dart';
 import 'package:flutter_practice/network/client.dart';
+import 'package:flutter_practice/ui/webview_page.dart';
 
 import '../network/endpoint/feed_api.dart';
 
@@ -54,7 +55,22 @@ class _FeedListPageState extends State<FeedListPageState> {
                   var feed = snapshot.data!.data[index];
                   return ListTile(
                     title: Text(feed.name ?? ''),
-                    subtitle: SelectableText(feed.link ?? ''),
+                    subtitle: InkWell(
+                      child: Text(
+                        feed.link ?? '',
+                        style:
+                            const TextStyle(color: Colors.blue), // 使其看起来像一个链接
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                WebViewPage(url: feed.link ?? ''),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 },
               );
