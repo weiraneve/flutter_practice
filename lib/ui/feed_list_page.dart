@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/model/feed_response.dart';
+import 'package:flutter_practice/network/client.dart';
 
-import '../model/feed_list_entity.dart';
-import '../network/feed_api.dart';
+import '../network/endpoint/feed_api.dart';
 
 class FeedListPage extends StatelessWidget {
   const FeedListPage({super.key});
@@ -20,12 +21,12 @@ class FeedListPageState extends StatefulWidget {
 }
 
 class _FeedListPageState extends State<FeedListPageState> {
-  late Future<FeedListEntity> feedList;
+  late Future<FeedResponse> feedList;
 
   @override
   void initState() {
     super.initState();
-    feedList = fetchFeedList();
+    feedList = FeedApi(DioClient().dio).getFeed();
   }
 
   @override
@@ -35,7 +36,7 @@ class _FeedListPageState extends State<FeedListPageState> {
         title: const Text(_feedPageTitle),
       ),
       body: Center(
-        child: FutureBuilder<FeedListEntity>(
+        child: FutureBuilder<FeedResponse>(
           future: feedList,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
@@ -53,7 +54,7 @@ class _FeedListPageState extends State<FeedListPageState> {
                   var feed = snapshot.data!.data[index];
                   return ListTile(
                     title: Text(feed.name ?? ''),
-                    subtitle: Text(feed.link ?? ''),
+                    subtitle: SelectableText(feed.link ?? ''),
                   );
                 },
               );
