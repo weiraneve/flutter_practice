@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../ui/count_page.dart';
-import '../ui/feed_list_page.dart';
+import '../ui/feed/feed_list_page.dart';
 import '../ui/home_page.dart';
 import '../ui/other_page.dart';
 
