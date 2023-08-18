@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 import '../../model/feed_response.dart';
 import '../../repository/feed_repository.dart';
@@ -9,8 +10,8 @@ class FeedListPageProvider extends ChangeNotifier {
   bool _isLoading = false;
   String? _errorMessage;
 
-  FeedListPageProvider({FeedRepository? repository})
-      : _repository = repository ?? FeedRepository();
+  FeedListPageProvider({FeedRepository? feedRepository})
+      : _repository = feedRepository ?? Get.find();
 
   List<FeedModel> get feeds => _feeds;
 
