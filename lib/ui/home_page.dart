@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../navigation/routes.dart';
 
@@ -17,21 +18,21 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, Routes.count);
+                Get.toNamed(Routes.count);
               },
               child: const Text(_goCountButtonText),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, Routes.other);
+                Get.toNamed(Routes.other);
               },
               child: const Text(_goOtherButtonText),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, Routes.feed);
+                Get.toNamed(Routes.feed);
               },
               child: const Text(_goFeedButtonText),
             ),
