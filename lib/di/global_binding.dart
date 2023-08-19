@@ -11,10 +11,11 @@ class GlobalBinding extends Bindings {
   void dependencies() {
     Get.put(DioClient(), permanent: true);
 
-    Get.lazyPut(() => FeedApi(findDio()));
-    Get.lazyPut(() => FeedRepository(feedApi: findFeedApi()));
+    Get.lazyPut(() => FeedApi(findDio()), fenix: true);
+    Get.lazyPut(() => FeedRepository(feedApi: findFeedApi()), fenix: true);
     Get.lazyPut(
-        () => FeedListPageProvider(feedRepository: findFeedRepository()));
+        () => FeedListPageProvider(feedRepository: findFeedRepository()),
+        fenix: true);
   }
 
   Dio findDio() => Get.find<DioClient>().dio;
