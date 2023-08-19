@@ -1,7 +1,7 @@
 import "package:dio/dio.dart";
 
 import '../common/config.dart';
-import '../common/constants.dart';
+import "../common/constants.dart";
 import "dio_interceptor.dart";
 
 class DioClient {
@@ -14,14 +14,13 @@ class DioClient {
   }
 
   DioClient._internal() {
-    var cfg = Config();
     _dio = Dio(
       BaseOptions(
-        baseUrl: cfg.get(baseUrl),
-        connectTimeout:
-            Duration(milliseconds: int.parse(cfg.get(connectTimeout))),
-        receiveTimeout:
-            Duration(milliseconds: int.parse(cfg.get(receiveTimeout))),
+        baseUrl: Env[baseUrl] ?? '',
+        connectTimeout: Duration(
+            milliseconds: int.parse((Env[connectTimeout] ?? '10000'))),
+        receiveTimeout: Duration(
+            milliseconds: int.parse(Env[receiveTimeout] ?? '10000')),
         responseType: ResponseType.json,
       ),
     );
