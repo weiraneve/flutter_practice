@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../ui/count_page.dart';
-import '../ui/feed/feed_list_page.dart';
-import '../ui/home_page.dart';
-import '../ui/other_page.dart';
+import '../pages/count_page.dart';
+import '../pages/feed/feed_list_page.dart';
+import '../pages/home_page.dart';
+import '../pages/other_page.dart';
 
 abstract class Routes {
   static const home = '/home';

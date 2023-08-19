@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_practice/network/endpoint/feed_api.dart';
-import 'package:flutter_practice/ui/feed/feed_list_page_provider.dart';
+import 'package:flutter_practice/pages/feed/feed_list_page_provider.dart';
 import 'package:get/get.dart';
 
 import '../network/client.dart';

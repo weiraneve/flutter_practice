@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/ui/webview_page.dart';
+import 'package:flutter_practice/pages/webview_page.dart';
 import 'package:provider/provider.dart';
 
 import 'feed_list_page_provider.dart';
