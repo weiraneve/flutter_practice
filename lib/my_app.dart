@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'di/global_binding.dart';
@@ -13,14 +14,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialBinding: GlobalBinding(),
       navigatorObservers: [GetXRouterObserver()],
-      title: _appTitle,
+      title: stringRes(R.appName),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: Routes.home,
       getPages: AppPages.pages,
+      locale: StringResources.locale,
+      fallbackLocale: StringResources.fallbackLocale,
+      translations: StringResources(),
     );
   }
 }
-
-const _appTitle = 'flutter practice';

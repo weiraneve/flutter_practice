@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../component/base_scaffold.dart';
-import '../res/gaps.dart';
+import '../res/theme/gaps.dart';
 
 class WebViewPage extends StatelessWidget {
   final String url;
@@ -61,7 +62,7 @@ class _WebViewPageState extends State<WebViewPageState> {
         return Future.value(true);
       },
       child: BaseScaffold(
-        title: _webviewPageTitle,
+        title: stringRes(R.webviewPageTitle),
         body: Stack(
           children: [
             WebViewWidget(
@@ -81,5 +82,3 @@ class _WebViewPageState extends State<WebViewPageState> {
     );
   }
 }
-
-const _webviewPageTitle = 'Webview Page';

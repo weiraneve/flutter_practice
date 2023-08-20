@@ -1,5 +1,6 @@
 import "package:dio/dio.dart";
 import "package:flutter_practice/common/logger.dart";
+import "package:flutter_practice/res/string/strings.dart";
 
 class DioInterceptor extends Interceptor {
   final Map<int, String> _statusCodeMessages = {
@@ -26,10 +27,8 @@ class DioInterceptor extends Interceptor {
     if (_statusCodeMessages.containsKey(statusCode)) {
       logger.i(_statusCodeMessages[statusCode]);
     } else {
-      logger.e(_serverErrorMessage);
+      logger.e(stringRes(R.serverErrorMessage));
     }
     super.onError(err, handler);
   }
 }
-
-const _serverErrorMessage = "Server Error";

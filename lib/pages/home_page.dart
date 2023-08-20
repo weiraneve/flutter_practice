@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:get/get.dart';
 
 import '../component/base_scaffold.dart';
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
-      title: _homePageTitle,
+      title: stringRes(R.homePageTitle),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -19,21 +20,21 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(Routes.count);
               },
-              child: const Text(_goCountButtonText),
+              child: Text(stringRes(R.goCountButtonText)),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed(Routes.other);
               },
-              child: const Text(_goOtherButtonText),
+              child: Text(stringRes(R.goOtherButtonText)),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed(Routes.feed);
               },
-              child: const Text(_goFeedButtonText),
+              child: Text(stringRes(R.goFeedButtonText)),
             ),
           ],
         ),
@@ -41,8 +42,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-const _homePageTitle = 'Home Page';
-const _goCountButtonText = 'Go to Count Page';
-const _goOtherButtonText = 'Go to Other Page';
-const _goFeedButtonText = 'Go to Feed Page';

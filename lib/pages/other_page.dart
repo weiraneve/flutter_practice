@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:get/get.dart';
 
 import '../component/base_scaffold.dart';
@@ -9,18 +10,15 @@ class OtherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
-      title: _otherPageTitle,
+      title: stringRes(R.otherPageTitle),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             Get.back();
           },
-          child: const Text(_backHomeButtonText),
+          child: Text(stringRes(R.backHomeButtonText)),
         ),
       ),
     );
   }
 }
-
-const _otherPageTitle = 'Other Page';
-const _backHomeButtonText = 'Go Back to Home';

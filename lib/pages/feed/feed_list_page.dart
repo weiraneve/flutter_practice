@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/webview_page.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:provider/provider.dart';
 
 import '../../component/base_scaffold.dart';
@@ -37,7 +38,7 @@ class _FeedListPageState extends State<FeedListPageState> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
-      title: _feedPageTitle,
+      title: stringRes(R.feedListPageTitle),
       body: Center(
         child: Consumer<FeedListPageProvider>(
           builder: (context, provider, child) {
@@ -52,7 +53,7 @@ class _FeedListPageState extends State<FeedListPageState> {
             }
 
             if (provider.feeds.isEmpty) {
-              return const Text(_dataEmptyWarn);
+              return Text(stringRes(R.goFeedButtonText));
             }
 
             return ListView.builder(
@@ -87,6 +88,3 @@ class _FeedListPageState extends State<FeedListPageState> {
     );
   }
 }
-
-const _feedPageTitle = 'Feed Page';
-const _dataEmptyWarn = 'No data available.';
