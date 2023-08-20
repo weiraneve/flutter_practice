@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
+import '../pages/animal/animal_image_page.dart';
 import '../pages/count_page.dart';
 import '../pages/feed/feed_list_page.dart';
 import '../pages/home_page.dart';
@@ -12,6 +13,7 @@ abstract class Routes {
   static const count = '/count';
   static const other = '/other';
   static const feed = '/feed';
+  static const animal = '/animal';
 }
 
 abstract class AppPages {
@@ -31,6 +33,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.feed,
       page: () => const FeedListPage(),
+    ),
+    GetPage(
+      name: Routes.animal,
+      page: () => AnimalImagePage(),
     ),
   ];
 }

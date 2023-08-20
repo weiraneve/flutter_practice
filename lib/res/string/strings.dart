@@ -17,12 +17,13 @@ class StringResources extends Translations {
   static const fallbackLocale = Locale('en', 'US');
 
   static final Map<String, String> _enUS =
-      enUS.map((key, value) => MapEntry(key.name, value));
+  enUS.map((key, value) => MapEntry(key.name, value));
   static final Map<String, String> _zhCN =
-      zhCN.map((key, value) => MapEntry(key.name, value));
+  zhCN.map((key, value) => MapEntry(key.name, value));
 
   @override
-  Map<String, Map<String, String>> get keys => {
+  Map<String, Map<String, String>> get keys =>
+      {
         'en_US': _enUS,
         'zh_CN': _zhCN,
       };
@@ -30,7 +31,6 @@ class StringResources extends Translations {
 
 stringRes(R key) => key.name.tr;
 
-// keys for string resources
 enum R {
   appName,
   countPageTitle,
@@ -43,7 +43,15 @@ enum R {
   goCountButtonText,
   goOtherButtonText,
   goFeedButtonText,
+  goAnimalButtonText,
   backHomeButtonText,
   dataEmptyWarn,
   serverErrorMessage,
+  animalImagePageTitle,
+  retry,
+  loading,
+  connectionErrorTitle,
+  connectionErrorSubtitle,
+  loadingOrParsingErrorTitle,
+  loadingOrParsingErrorSubtitle,
 }
