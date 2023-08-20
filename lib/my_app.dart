@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: GlobalBinding(),
+      navigatorObservers: [GetXRouterObserver()],
       title: _appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,

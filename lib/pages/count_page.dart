@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../component/base_scaffold.dart';
+
 class CountPage extends StatelessWidget {
   const CountPage({super.key});
 
@@ -29,10 +31,8 @@ class _CountPageStateState extends State<CountPageState> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+    return BaseScaffold(
+      title: widget.title,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

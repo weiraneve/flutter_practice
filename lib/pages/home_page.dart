@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../component/base_scaffold.dart';
 import '../navigation/routes.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,10 +9,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(_homePageTitle),
-      ),
+    return BaseScaffold(
+      title: _homePageTitle,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

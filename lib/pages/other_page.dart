@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../component/base_scaffold.dart';
+
 class OtherPage extends StatelessWidget {
   const OtherPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(_otherPageTitle),
-      ),
+    return BaseScaffold(
+      title: _otherPageTitle,
       body: Center(
         child: ElevatedButton(
           onPressed: () {

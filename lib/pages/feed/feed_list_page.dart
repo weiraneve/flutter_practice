@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/webview_page.dart';
 import 'package:provider/provider.dart';
 
+import '../../component/base_scaffold.dart';
 import 'feed_list_page_provider.dart';
 
 class FeedListPage extends StatelessWidget {
@@ -35,10 +36,8 @@ class _FeedListPageState extends State<FeedListPageState> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(_feedPageTitle),
-      ),
+    return BaseScaffold(
+      title: _feedPageTitle,
       body: Center(
         child: Consumer<FeedListPageProvider>(
           builder: (context, provider, child) {
