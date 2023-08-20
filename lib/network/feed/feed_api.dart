@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_practice/common/constants.dart';
 import "package:retrofit/retrofit.dart";
 
-import '../../common/config.dart';
-import '../../model/feed_response.dart';
+import '../../../common/config.dart';
+import 'model/feed_response.dart';
 
 part 'feed_api.g.dart';
 

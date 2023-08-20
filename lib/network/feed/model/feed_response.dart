@@ -1,6 +1,6 @@
 import "package:json_annotation/json_annotation.dart";
 
-part "feed_response.g.dart";
+part 'feed_response.g.dart';
 
 @JsonSerializable()
 class FeedResponse {
