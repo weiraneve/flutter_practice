@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 
 import '../../network/feed/model/feed_response.dart';
 import '../../repository/feed_repository.dart';
@@ -11,7 +10,7 @@ class FeedListPageProvider extends ChangeNotifier {
   String? _errorMessage;
 
   FeedListPageProvider({FeedRepository? feedRepository})
-      : _repository = feedRepository ?? Get.find();
+      : _repository = feedRepository ?? FeedRepository();
 
   List<FeedModel> get feeds => _feeds;
 
@@ -25,7 +24,7 @@ class FeedListPageProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _feeds = await _repository.getFeedModels();
+      _feeds = await _repository.getFeedModels()..shuffle();
     } catch (e) {
       _errorMessage = e.toString();
     } finally {
