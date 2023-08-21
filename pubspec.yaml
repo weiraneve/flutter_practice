@@ -39,6 +39,9 @@ flutter:
 
   uses-material-design: true
   assets:
+    - assets/images/error_no_connection.png
+    - assets/images/error_loading_or_parsing.png
+
     - config/dev.env
     - config/stage.env
     - config/prod.env
