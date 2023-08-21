@@ -43,6 +43,13 @@ class HomePage extends StatelessWidget {
               },
               child: Text(stringRes(R.goAnimalButtonText)),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(Routes.moments);
+              },
+              child: Text(stringRes(R.goMomentsButtonText)),
+            ),
           ],
         ),
       ),

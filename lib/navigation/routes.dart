@@ -6,6 +6,7 @@ import '../pages/animal/animal_image_page.dart';
 import '../pages/count/count_page.dart';
 import '../pages/feed/feed_list_page.dart';
 import '../pages/home_page.dart';
+import '../pages/moments/page.dart';
 import '../pages/other_page.dart';
 
 abstract class Routes {
@@ -14,6 +15,7 @@ abstract class Routes {
   static const other = '/other';
   static const feed = '/feed';
   static const animal = '/animal';
+  static const moments = '/moments';
 }
 
 abstract class AppPages {
@@ -37,6 +39,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.animal,
       page: () => AnimalImagePage(),
+    ),
+    GetPage(
+      name: Routes.moments,
+      page: () => MomentsPage(),
     ),
   ];
 }

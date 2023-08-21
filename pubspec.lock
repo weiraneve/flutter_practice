@@ -262,6 +262,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.3.1"
+  flutter_constraintlayout:
+    dependency: "direct main"
+    description:
+      name: flutter_constraintlayout
+      sha256: "92d8609b8182bf962667d25fa200c33de31fd1b108d13fac6808962cce2efc67"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.7.0-stable"
   flutter_dotenv:
     dependency: "direct main"
     description:

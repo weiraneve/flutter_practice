@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../network/animal/animal_api.dart';
 import '../network/client.dart';
 import '../network/feed/feed_api.dart';
+import '../network/moments/api.dart';
 import '../repository/animal_image_repository.dart';
 import '../repository/feed_repository.dart';
 
@@ -17,6 +18,7 @@ class GlobalBinding extends Bindings {
     Get.lazyPut(() => AnimalApi(findDio()), fenix: true);
     Get.lazyPut(() => AnimalImageRepository(animalApi: findAnimalApi()),
         fenix: true);
+    Get.lazyPut(() => MomentsApi(findDio()), fenix: true);
   }
 
   Dio findDio() => Get.find<DioClient>().dio;
