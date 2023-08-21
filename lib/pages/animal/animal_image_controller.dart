@@ -1,4 +1,4 @@
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get.dart';
 
 import '../../component/async_loader/data_controller.dart';
 import '../../network/animal/model/animal.dart';
@@ -8,7 +8,7 @@ class AnimalImageController extends DataController<List<Animal>> {
   final AnimalImageRepository _repository;
 
   AnimalImageController({AnimalImageRepository? animalImageRepository})
-      : _repository = animalImageRepository ?? AnimalImageRepository() {
+      : _repository = animalImageRepository ?? Get.find() {
     dataRx = Rx<List<Animal>>([]);
   }
 
