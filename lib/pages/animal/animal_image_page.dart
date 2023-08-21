@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common/async_loader/async_load_processor.dart';
-import '../../common/async_loader/auto_load_controller.dart';
+import '../../component/async_loader/async_load_processor.dart';
+import '../../component/async_loader/auto_load_controller.dart';
 import '../../component/base_scaffold.dart';
 import '../../res/string/strings.dart';
 import 'animal_image_controller.dart';

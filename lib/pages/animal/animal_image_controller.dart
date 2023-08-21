@@ -1,6 +1,6 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
-import '../../common/async_loader/data_controller.dart';
+import '../../component/async_loader/data_controller.dart';
 import '../../network/animal/model/animal.dart';
 import '../../repository/animal_image_repository.dart';
 

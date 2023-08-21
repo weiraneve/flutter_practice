@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../logger.dart';
+import '../../common/logger.dart';
 import 'data_controller.dart';
 import 'load_state.dart';
 
