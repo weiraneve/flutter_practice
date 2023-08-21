@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/pages/webview_page.dart';
+import 'package:flutter_practice/component/webview.dart';
 import 'package:flutter_practice/res/string/strings.dart';
 import 'package:provider/provider.dart';
 
@@ -77,7 +77,7 @@ class _FeedListPageState extends State<FeedListPageState> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                WebViewPage(url: feed.link ?? ''),
+                                WebView(url: feed.link ?? ''),
                           ),
                         );
                       },

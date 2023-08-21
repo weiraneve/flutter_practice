@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/res/string/strings.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../component/base_scaffold.dart';
+import 'base_scaffold.dart';
 import '../res/theme/gaps.dart';
 
-class WebViewPage extends StatelessWidget {
+class WebView extends StatelessWidget {
   final String url;
 
-  const WebViewPage({super.key, required this.url});
+  const WebView({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {
