@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../component/base_scaffold.dart';
 
 class OtherPage extends StatelessWidget {
-  const OtherPage({Key? key}) : super(key: key);
+  const OtherPage({super.key});
 
   @override
   Widget build(BuildContext context) {

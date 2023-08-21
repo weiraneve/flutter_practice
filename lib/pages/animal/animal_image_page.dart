@@ -12,7 +12,7 @@ class AnimalImagePage extends StatelessWidget {
   final AnimalImageController _controller;
 
   AnimalImagePage({super.key, AnimalImageController? animalImageController})
-      : _controller = animalImageController ?? Get.put(AnimalImageController());
+      : _controller = animalImageController ?? AnimalImageController();
 
   @override
   Widget build(BuildContext context) {

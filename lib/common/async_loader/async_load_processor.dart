@@ -9,17 +9,15 @@ import 'loading_placeholder.dart';
 
 Widget _errorView(Object error, VoidCallback onRetry) {
   return ErrorPlaceholder(
-    errorType: error is Exception
-        ? ErrorType.connection
-        : ErrorType.loadingOrParsing,
+    errorType:
+        error is Exception ? ErrorType.connection : ErrorType.loadingOrParsing,
     onRetry: onRetry,
   );
 }
 
 void _showErrorAlert(Object error) {
-  final type = error is Exception
-      ? ErrorType.connection
-      : ErrorType.loadingOrParsing;
+  final type =
+      error is Exception ? ErrorType.connection : ErrorType.loadingOrParsing;
   Get.snackbar(stringRes(type.title), stringRes(type.subTitle));
 }
 
@@ -37,32 +35,30 @@ Widget AsyncLoadProcessor<T>(
     builder: (context) {
       return Obx(() {
         final loadState = asyncLoadController.loadState();
-        if (loadState is Loading<T>) {
-          final data = loadState.data;
-          if (data == null) {
-            return nonNullLoadingView;
-          } else {
-            // reload
-            if (showLoadingInReload) {
-              return nonNullLoadingView;
+        switch (loadState) {
+          case Loading():
+            final data = loadState.data;
+            if (data != null && !showLoadingInReload) {
+              return content(data);
             } else {
+              return nonNullLoadingView;
+            }
+          case Success():
+            return content(loadState.data);
+
+          case Failure():
+            final data = loadState.data;
+            if (data == null) {
+              return errorView(loadState.error, () {
+                asyncLoadController.load();
+              });
+            } else {
+              showErrorAlert(loadState.error);
               return content(data);
             }
-          }
-        } else if (loadState is Success<T>) {
-          return content(loadState.data);
-        } else if (loadState is Failure<T>) {
-          final data = loadState.data;
-          if (data == null) {
-            return errorView(loadState.error, () {
-              asyncLoadController.load();
-            });
-          } else {
-            showErrorAlert(loadState.error);
-            return content(data);
-          }
-        } else {
-          return Container();
+
+          default:
+            return Container();
         }
       });
     },

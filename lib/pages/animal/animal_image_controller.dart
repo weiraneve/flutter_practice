@@ -1,4 +1,3 @@
-import 'package:flutter_practice/common/logger.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 import '../../common/async_loader/data_controller.dart';
@@ -22,15 +21,6 @@ class AnimalImageController extends DataController<List<Animal>> {
 
   @override
   Future<void> refresh() async {
-    try {
-      final animals = await fetch();
-      updateData(animals);
-    } catch (e) {
-      logger.e(e);
-    }
-  }
-
-  void updateData(List<Animal> animals) {
-    data = animals;
+    await fetch();
   }
 }

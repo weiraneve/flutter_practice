@@ -1,5 +1,6 @@
 import "package:flutter_dotenv/flutter_dotenv.dart";
 
+// ignore: non_constant_identifier_names
 final Env = dotenv.env;
 
 Future<void> initConfig(String env) async {
