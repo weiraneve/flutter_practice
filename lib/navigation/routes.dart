@@ -3,7 +3,7 @@ import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../pages/animal/animal_image_page.dart';
-import '../pages/count_page.dart';
+import '../pages/count/count_page.dart';
 import '../pages/feed/feed_list_page.dart';
 import '../pages/home_page.dart';
 import '../pages/other_page.dart';
@@ -24,7 +24,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.count,
-      page: () => const CountPage(),
+      page: () => CountPage(),
     ),
     GetPage(
       name: Routes.other,
