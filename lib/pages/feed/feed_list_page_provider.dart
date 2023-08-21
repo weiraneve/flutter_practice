@@ -22,9 +22,18 @@ class FeedListPageProvider extends ChangeNotifier {
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
+    await _feedFeeds();
+  }
 
+  Future<void> refreshFeeds() async {
+    await _feedFeeds();
+    notifyListeners();
+  }
+
+  Future<void> _feedFeeds() async {
     try {
-      _feeds = await _repository.getFeedModels()..shuffle();
+      _feeds = await _repository.getFeedModels()
+        ..shuffle();
     } catch (e) {
       _errorMessage = e.toString();
     } finally {

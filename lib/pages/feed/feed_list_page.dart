@@ -40,51 +40,74 @@ class _FeedListPageState extends State<FeedListPageState> {
     return BaseScaffold(
       title: stringRes(R.feedListPageTitle),
       body: Center(
-        child: Consumer<FeedListPageProvider>(
-          builder: (context, provider, child) {
-            // Checking the loading state
-            if (provider.isLoading) {
-              return const CircularProgressIndicator();
-            }
-
-            // Checking if there's any error message
-            if (provider.errorMessage != null) {
-              return Text('Error: ${provider.errorMessage}');
-            }
-
-            if (provider.feeds.isEmpty) {
-              return Text(stringRes(R.goFeedButtonText));
-            }
-
-            return ListView.builder(
-              itemCount: provider.feeds.length,
-              itemBuilder: (context, index) {
-                var feed = provider.feeds[index];
-                return ListTile(
-                  title: Text(feed.name ?? ''),
-                  subtitle: InkWell(
-                    child: Text(
-                      feed.link ?? '',
-                      style: const TextStyle(
-                        color: Colors.blue, // make it look like a link
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              WebViewPage(url: feed.link ?? ''),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            );
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await Provider.of<FeedListPageProvider>(context, listen: false)
+                .refreshFeeds();
           },
+          child: Consumer<FeedListPageProvider>(
+            builder: (context, provider, child) {
+              if (provider.isLoading) {
+                return _LoadingSingleChildScrollView();
+              }
+
+              if (provider.errorMessage != null) {
+                _ErrorSingleChildScrollView(provider.errorMessage!);
+              }
+
+              if (provider.feeds.isEmpty) {
+                return _EmptyChildScrollView();
+              }
+
+              return ListView.builder(
+                itemCount: provider.feeds.length,
+                itemBuilder: (context, index) {
+                  var feed = provider.feeds[index];
+                  return ListTile(
+                    title: Text(feed.name ?? ''),
+                    subtitle: InkWell(
+                      child: Text(
+                        feed.link ?? '',
+                        style: const TextStyle(
+                          color: Colors.blue, // make it look like a link
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                WebViewPage(url: feed.link ?? ''),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );
   }
 }
+
+// ignore: non_constant_identifier_names
+Widget _LoadingSingleChildScrollView() => const SingleChildScrollView(
+      physics: AlwaysScrollableScrollPhysics(),
+      child: CircularProgressIndicator(),
+    );
+
+// ignore: non_constant_identifier_names
+Widget _ErrorSingleChildScrollView(String errorMessage) =>
+    SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      child: Text('Error: $errorMessage'),
+    );
+
+// ignore: non_constant_identifier_names
+Widget _EmptyChildScrollView() => SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      child: Text(stringRes(R.goFeedButtonText)),
+    );
