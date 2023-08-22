@@ -5,7 +5,7 @@ import "package:retrofit/retrofit.dart";
 import '../../../common/config.dart';
 import 'model/feed_response.dart';
 
-part 'feed_api.g.dart';
+part 'api.g.dart';
 
 @RestApi()
 abstract class FeedApi {

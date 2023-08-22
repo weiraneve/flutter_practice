@@ -42,7 +42,7 @@ class UserView extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ).applyConstraint(
-        id: ConstraintId('card'),
+        id: ConstraintId(_card),
         top: parent.top,
         right: parent.right,
         margin: const EdgeInsets.only(top: 150, right: EdgeInset.S),
@@ -53,11 +53,13 @@ class UserView extends StatelessWidget {
           color: theme.colorScheme.surface,
         ),
       ).applyConstraint(
-        right: ConstraintId('card').left,
-        bottom: ConstraintId('card').bottom,
+        right: ConstraintId(_card).left,
+        bottom: ConstraintId(_card).bottom,
         margin:
             const EdgeInsets.only(right: EdgeInset.XXS, bottom: EdgeInset.XL),
       ),
     ]);
   }
 }
+
+const _card = 'card';

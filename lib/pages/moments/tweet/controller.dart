@@ -13,5 +13,9 @@ class TweetController extends DataController<List<Tweet>> {
   }
 
   @override
-  Future<List<Tweet>> fetch() => _repository.getTweets(0, 20);
+  Future<List<Tweet>> fetch() {
+    const startIndex = 0;
+    const count = 20;
+    return _repository.getTweets(startIndex, count);
+  }
 }

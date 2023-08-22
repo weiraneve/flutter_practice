@@ -13,9 +13,8 @@ import 'controller.dart';
 class TweetView extends StatelessWidget {
   final TweetController _controller;
 
-  const TweetView(TweetController tweetController, {Key? key})
-      : _controller = tweetController,
-        super(key: key);
+  const TweetView(TweetController tweetController, {super.key})
+      : _controller = tweetController;
 
   @override
   Widget build(BuildContext context) {

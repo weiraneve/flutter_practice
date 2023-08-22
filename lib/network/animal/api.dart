@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 
 import 'model/animal.dart';
 
-part 'animal_api.g.dart';
+part 'api.g.dart';
 
 @RestApi()
 abstract class AnimalApi {

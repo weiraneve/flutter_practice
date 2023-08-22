@@ -12,9 +12,8 @@ import 'controller.dart';
 class MomentsPage extends StatelessWidget {
   final MomentsController _controller;
 
-  MomentsPage({MomentsController? momentsController, Key? key})
-      : _controller = momentsController ?? Get.put(MomentsController()),
-        super(key: key);
+  MomentsPage({MomentsController? momentsController, super.key})
+      : _controller = momentsController ?? Get.put(MomentsController());
 
   @override
   Widget build(BuildContext context) {

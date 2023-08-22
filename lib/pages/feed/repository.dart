@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 
 import '../../common/logger.dart';
-import '../../network/feed/feed_api.dart';
+import '../../network/feed/api.dart';
 import '../../network/feed/model/feed_response.dart';
 
 class FeedRepository {

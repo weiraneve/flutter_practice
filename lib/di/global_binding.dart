@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
-import '../network/animal/animal_api.dart';
+import '../network/animal/api.dart';
 import '../network/client.dart';
-import '../network/feed/feed_api.dart';
+import '../network/feed/api.dart';
 import '../network/moments/api.dart';
 import '../pages/animal/repository.dart';
 import '../pages/feed/repository.dart';
