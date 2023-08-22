@@ -16,7 +16,7 @@ class UserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = _controller.data;
+    final user = _controller.data.value;
     final theme = Get.theme;
 
     return ConstraintLayout(children: [

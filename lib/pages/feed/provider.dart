@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../network/feed/model/feed_response.dart';
-import '../../repository/feed_repository.dart';
+import 'repository.dart';
 
 class FeedListPageProvider extends ChangeNotifier {
   final FeedRepository _repository;

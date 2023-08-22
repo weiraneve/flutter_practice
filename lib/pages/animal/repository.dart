@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter_practice/network/animal/animal_api.dart';
 import 'package:get/get.dart';
 
-import '../network/animal/model/animal.dart';
+import '../../network/animal/model/animal.dart';
 
 class AnimalImageRepository {
   final AnimalApi _animalApi;

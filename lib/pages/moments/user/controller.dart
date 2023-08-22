@@ -9,7 +9,7 @@ class UserController extends DataController<User> {
 
   UserController({UserRepository? repository})
       : _repository = repository ?? UserRepository() {
-    dataRx = Rx<User>(const User(null, null, null, null));
+    data = Rx<User>(const User(null, null, null, null));
   }
 
   @override

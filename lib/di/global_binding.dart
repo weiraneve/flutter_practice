@@ -5,8 +5,8 @@ import '../network/animal/animal_api.dart';
 import '../network/client.dart';
 import '../network/feed/feed_api.dart';
 import '../network/moments/api.dart';
-import '../repository/animal_image_repository.dart';
-import '../repository/feed_repository.dart';
+import '../pages/animal/repository.dart';
+import '../pages/feed/repository.dart';
 
 class GlobalBinding extends Bindings {
   @override

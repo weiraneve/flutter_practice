@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../pages/animal/animal_image_page.dart';
-import '../pages/count/count_page.dart';
-import '../pages/feed/feed_list_page.dart';
+import '../pages/animal/page.dart';
+import '../pages/count/page.dart';
+import '../pages/feed/page.dart';
 import '../pages/home_page.dart';
 import '../pages/moments/page.dart';
 import '../pages/other_page.dart';

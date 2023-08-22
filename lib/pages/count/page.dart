@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/pages/count/count_controller.dart';
+import 'package:flutter_practice/pages/count/controller.dart';
 import 'package:get/get.dart';
 
 import '../../component/base_scaffold.dart';

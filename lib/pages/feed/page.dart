@@ -4,7 +4,7 @@ import 'package:flutter_practice/res/string/strings.dart';
 import 'package:provider/provider.dart';
 
 import '../../component/base_scaffold.dart';
-import 'feed_list_page_provider.dart';
+import 'provider.dart';
 
 class FeedListPage extends StatelessWidget {
   const FeedListPage({super.key});

@@ -6,7 +6,7 @@ import '../../component/async_loader/async_load_processor.dart';
 import '../../component/async_loader/auto_load_controller.dart';
 import '../../component/base_scaffold.dart';
 import '../../res/string/strings.dart';
-import 'animal_image_controller.dart';
+import 'controller.dart';
 
 class AnimalImagePage extends StatelessWidget {
   final AnimalImageController _controller;
@@ -35,9 +35,9 @@ class AnimalImagePage extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
         ),
-        itemCount: animals.length,
+        itemCount: animals.value.length,
         itemBuilder: (context, index) {
-          final animal = animals[index];
+          final animal = animals.value[index];
           return CachedNetworkImage(
             imageUrl: animal.url ?? '',
             fit: BoxFit.cover,

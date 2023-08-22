@@ -17,7 +17,7 @@ class AsyncLoadController<T> extends GetxController {
     try {
       final data = await _dataController.fetch();
       _data = data;
-      _dataController.data = data;
+      _dataController.data = data.obs;
       loadState.value = Success<T>(data);
     } catch (e) {
       logger.e(_errorLoadMessage, e);

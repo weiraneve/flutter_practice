@@ -9,7 +9,7 @@ class TweetController extends DataController<List<Tweet>> {
 
   TweetController({TweetRepository? repository})
       : _repository = repository ?? TweetRepository() {
-    dataRx = Rx<List<Tweet>>([]);
+    data = Rx<List<Tweet>>([]);
   }
 
   @override
