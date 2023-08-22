@@ -9,7 +9,7 @@ const Map<R, String> enUS = {
   R.otherPageTitle: 'Other Page',
   R.webviewPageTitle: 'Webview Page',
   R.feedListPageTitle: 'Feed Page',
-  R.momentsPageTitle: 'Moments',
+  R.momentsPageTitle: 'Moments Page',
   R.pushButtonMessage: 'You have pushed the button this many times: ',
   R.incrementTip: 'Increment',
   R.goCountButtonText: 'Go to Count Page',

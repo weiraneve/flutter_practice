@@ -9,7 +9,7 @@ const Map<R, String> zhCN = {
   R.otherPageTitle: 'Other Page',
   R.webviewPageTitle: 'Webview Page',
   R.feedListPageTitle: 'Feed Page',
-  R.momentsPageTitle: 'Moments',
+  R.momentsPageTitle: 'Moments Page',
   R.pushButtonMessage: '你已经点击了这个按钮(次数)：',
   R.incrementTip: '增加',
   R.goCountButtonText: 'Go to Count Page',
