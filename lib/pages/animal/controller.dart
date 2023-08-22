@@ -8,19 +8,12 @@ class AnimalImageController extends DataController<List<Animal>> {
   final AnimalImageRepository _repository;
 
   AnimalImageController({AnimalImageRepository? animalImageRepository})
-      : _repository = animalImageRepository ?? Get.find() {
-    data = Rx<List<Animal>>([]);
-  }
+      : _repository = animalImageRepository ?? Get.find();
 
   @override
   Future<List<Animal>> fetch() async {
     final animals = await _repository.getAnimals();
-    data.value = animals;
+    data = animals;
     return animals;
-  }
-
-  @override
-  Future<void> refresh() async {
-    await fetch();
   }
 }

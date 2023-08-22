@@ -8,12 +8,6 @@ class Loading<T> extends LoadState<T> {
   Loading(this.data);
 }
 
-class LoadingMore<T> extends LoadState<T> {
-  final T data;
-
-  LoadingMore(this.data);
-}
-
 class Success<T> extends LoadState<T> {
   final T data;
 

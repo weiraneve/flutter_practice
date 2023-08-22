@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 abstract class DataController<T> extends GetxController {
-  late Rx<T> data;
+  late T data;
 
   Future<T> fetch();
 }

@@ -18,7 +18,7 @@ class TweetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tweets = _controller.data.value;
+    final tweets = _controller.data;
 
     return ListView.separated(
       itemCount: tweets.length,

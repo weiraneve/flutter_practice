@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../res/string/strings.dart';
@@ -25,42 +25,53 @@ void _showErrorAlert(Object error) {
 Widget AsyncLoadProcessor<T>(
   AsyncLoadController<T> asyncLoadController, {
   bool showLoadingInReload = true,
+  bool useRefresh = true,
   Widget? loadingView,
   Widget Function(Object error, VoidCallback onRetry) errorView = _errorView,
   Function(Object error) showErrorAlert = _showErrorAlert,
   required Widget Function(T data) content,
 }) {
   final nonNullLoadingView = loadingView ?? LoadingPlaceholder();
+
+  Widget buildContent(BuildContext context) {
+    return Obx(() {
+      final loadState = asyncLoadController.loadState();
+      switch (loadState) {
+        case Loading():
+          final data = loadState.data;
+          if (data != null && !showLoadingInReload) {
+            return content(data);
+          } else {
+            return nonNullLoadingView;
+          }
+        case Success():
+          return content(loadState.data);
+        case Failure():
+          final data = loadState.data;
+          if (data == null) {
+            return errorView(loadState.error, () {
+              asyncLoadController.load();
+            });
+          } else {
+            showErrorAlert(loadState.error);
+            return content(data);
+          }
+        default:
+          return Container();
+      }
+    });
+  }
+
   return Builder(
     builder: (context) {
-      return Obx(() {
-        final loadState = asyncLoadController.loadState();
-        switch (loadState) {
-          case Loading():
-            final data = loadState.data;
-            if (data != null && !showLoadingInReload) {
-              return content(data);
-            } else {
-              return nonNullLoadingView;
-            }
-          case Success():
-            return content(loadState.data);
-
-          case Failure():
-            final data = loadState.data;
-            if (data == null) {
-              return errorView(loadState.error, () {
-                asyncLoadController.load();
-              });
-            } else {
-              showErrorAlert(loadState.error);
-              return content(data);
-            }
-
-          default:
-            return Container();
-        }
-      });
+      if (useRefresh) {
+        return RefreshIndicator(
+          onRefresh: asyncLoadController.refresh,
+          child: buildContent(context),
+        );
+      } else {
+        return buildContent(context);
+      }
     },
   );
 }

@@ -17,7 +17,7 @@ class AsyncLoadController<T> extends GetxController {
     try {
       final data = await _dataController.fetch();
       _data = data;
-      _dataController.data = data.obs;
+      _dataController.data = data;
       loadState.value = Success<T>(data);
     } catch (e) {
       logger.e(_errorLoadMessage, e);
@@ -25,9 +25,16 @@ class AsyncLoadController<T> extends GetxController {
     }
   }
 
-  void reset() {
-    loadState.value = Idle<T>();
-    _data = null;
+  @override
+  Future<void> refresh() async {
+    super.refresh();
+    load();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    load();
   }
 }
 

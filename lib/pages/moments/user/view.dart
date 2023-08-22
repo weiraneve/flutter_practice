@@ -10,13 +10,12 @@ import 'controller.dart';
 class UserView extends StatelessWidget {
   final UserController _controller;
 
-  const UserView(UserController userController, {Key? key})
-      : _controller = userController,
-        super(key: key);
+  const UserView(UserController userController, {super.key})
+      : _controller = userController;
 
   @override
   Widget build(BuildContext context) {
-    final user = _controller.data.value;
+    final user = _controller.data;
     final theme = Get.theme;
 
     return ConstraintLayout(children: [

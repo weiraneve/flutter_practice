@@ -17,10 +17,8 @@ class MomentsController extends DataController<Object> {
   @override
   Future<Object> fetch() async {
     await Future.wait([
-      userController.fetch().then((value) => userController.data.value = value),
-      tweetController
-          .fetch()
-          .then((value) => tweetController.data.value = value),
+      userController.fetch().then((value) => userController.data = value),
+      tweetController.fetch().then((value) => tweetController.data = value),
     ]);
     return Object();
   }
