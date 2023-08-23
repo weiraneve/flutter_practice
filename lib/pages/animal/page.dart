@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/component/async_loader/async_load_controller.dart';
+import 'package:flutter_practice/component/async_loader/auto_load_controller.dart';
 import 'package:get/get.dart';
 
 import '../../component/async_loader/async_load_processor.dart';
@@ -19,7 +19,7 @@ class AnimalImagePage extends StatelessWidget {
     return BaseScaffold(
       title: stringRes(R.animalImagePageTitle),
       body: AsyncLoadProcessor(
-        Get.put(AsyncLoadController(_controller)),
+        Get.put(AutoLoadController(_controller)),
         content: (data) => _animalImageContent(_controller),
       ),
     );

@@ -30,12 +30,6 @@ class AsyncLoadController<T> extends GetxController {
     super.refresh();
     load();
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-    load();
-  }
 }
 
 const _errorLoadMessage = '[AsyncLoadViewModel] there is an error in fetcher';

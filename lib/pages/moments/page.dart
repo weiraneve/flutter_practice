@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/component/async_loader/async_load_controller.dart';
+import 'package:flutter_practice/component/async_loader/auto_load_controller.dart';
 import 'package:flutter_practice/pages/moments/tweet/view.dart';
 import 'package:flutter_practice/pages/moments/user/view.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class MomentsPage extends StatelessWidget {
     return BaseScaffold(
       title: stringRes(R.momentsPageTitle),
       body: AsyncLoadProcessor(
-        Get.put(AsyncLoadController(_controller)),
+        Get.put(AutoLoadController(_controller)),
         useRefresh: false,
         content: (data) => NestedScrollView(
           headerSliverBuilder: (_, __) => [
