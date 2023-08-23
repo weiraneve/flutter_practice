@@ -1,6 +1,6 @@
 import '../../../network/moments/model/tweet.dart';
 
-class TweetStore {
+class TweetCache {
   static const int _EXPIRE_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
   int _expireTime = 0;

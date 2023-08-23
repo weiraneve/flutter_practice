@@ -71,13 +71,13 @@ class TweetView extends StatelessWidget {
       );
 
   Widget _imageGrid(List<model.Image> images) {
-    final cnt = images.length;
+    final imageLength = images.length;
     final int crossAxisCount;
-    if (cnt <= 1) {
+    if (imageLength <= 1) {
       crossAxisCount = 1;
-    } else if (cnt <= 3) {
+    } else if (imageLength <= 3) {
       crossAxisCount = 3;
-    } else if (cnt <= 4) {
+    } else if (imageLength <= 4) {
       crossAxisCount = 2;
     } else {
       crossAxisCount = 3;

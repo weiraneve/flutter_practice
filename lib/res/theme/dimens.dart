@@ -18,6 +18,7 @@ class Dimens {
   static const double gapDp24 = 24;
   static const double gapDp32 = 32;
   static const double gapDp50 = 50;
+  static const double gapDp150 = 150;
 }
 
 class WidgetSize {
