@@ -9,7 +9,7 @@ void startup() async {
   await initHive();
   await createBox(hiveTestBoxName);
 
-  String env = const String.fromEnvironment("ENV", defaultValue: "local");
+  String env = const String.fromEnvironment(environment);
   await initConfig(env);
 
   runApp(const MyApp());
