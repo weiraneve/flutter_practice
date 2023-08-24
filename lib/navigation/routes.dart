@@ -8,12 +8,10 @@ import '../pages/count/page.dart';
 import '../pages/feed/page.dart';
 import '../pages/home_page.dart';
 import '../pages/moments/page.dart';
-import '../pages/other_page.dart';
 
 abstract class Routes {
   static const home = '/home';
   static const count = '/count';
-  static const other = '/other';
   static const feed = '/feed';
   static const animal = '/animal';
   static const moments = '/moments';
@@ -29,10 +27,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.count,
       page: () => CountPage(),
-    ),
-    GetPage(
-      name: Routes.other,
-      page: () => const OtherPage(),
     ),
     GetPage(
       name: Routes.feed,

@@ -13,7 +13,6 @@ const Map<R, String> zhCN = {
   R.pushButtonMessage: '你已经点击了这个按钮(次数)：',
   R.incrementTip: '增加',
   R.goCountButtonText: 'Go to Count Page',
-  R.goOtherButtonText: 'Go to Other Page',
   R.goFeedButtonText: 'Go to Feed Page',
   R.goAnimalButtonText: 'Go to Animal Page',
   R.goMomentsButtonText: 'Go to Moments Page',

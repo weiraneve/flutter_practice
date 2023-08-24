@@ -25,13 +25,6 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed(Routes.other);
-              },
-              child: Text(stringRes(R.goOtherButtonText)),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
                 Get.toNamed(Routes.feed);
               },
               child: Text(stringRes(R.goFeedButtonText)),

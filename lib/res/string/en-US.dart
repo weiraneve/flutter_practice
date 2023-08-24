@@ -13,7 +13,6 @@ const Map<R, String> enUS = {
   R.pushButtonMessage: 'You have pushed the button this many times: ',
   R.incrementTip: 'Increment',
   R.goCountButtonText: 'Go to Count Page',
-  R.goOtherButtonText: 'Go to Other Page',
   R.goFeedButtonText: 'Go to Feed Page',
   R.goAnimalButtonText: 'Go to Animal Page',
   R.goMomentsButtonText: 'Go to Moments Page',

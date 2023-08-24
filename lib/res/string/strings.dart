@@ -42,7 +42,6 @@ enum R {
   pushButtonMessage,
   incrementTip,
   goCountButtonText,
-  goOtherButtonText,
   goFeedButtonText,
   goAnimalButtonText,
   goMomentsButtonText,
