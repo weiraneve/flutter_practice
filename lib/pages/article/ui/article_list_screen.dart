@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../component/async_loader/error_placeholder.dart';
 import '../../../component/base_scaffold.dart';
 import '../../../res/string/strings.dart';
 import '../../../res/theme/dimens.dart';
@@ -16,29 +17,12 @@ class ArticleListScreen extends StatelessWidget {
   static const String _search = 'Search ...';
   static const String _loading = 'Loading ...';
   static const String _empty = 'No Results';
-  static const String _error = 'An error occurred:';
 
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<ArticleListBloc>(context);
     return BaseScaffold(
-      title: stringRes(R.articlePageTitle),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(Dimens.gapDp16),
-            child: TextField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), hintText: _search),
-              onChanged: bloc.searchQuery.add,
-            ),
-          ),
-          Expanded(
-            child: _buildResults(bloc),
-          )
-        ],
-      ),
-    );
+        title: stringRes(R.articlePageTitle), body: _buildResults(bloc));
   }
 
   Widget _buildResults(ArticleListBloc bloc) {
@@ -46,9 +30,11 @@ class ArticleListScreen extends StatelessWidget {
         stream: bloc.articlesStream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Center(
-              child: Text('$_error ${snapshot.error}'),
-            );
+            return ErrorPlaceholder(
+                errorType: snapshot.error is Exception
+                    ? ErrorType.connection
+                    : ErrorType.loadingOrParsing,
+                onRetry: () {});
           }
 
           final results = snapshot.data;
@@ -59,7 +45,21 @@ class ArticleListScreen extends StatelessWidget {
             return const Center(child: Text(_empty));
           }
 
-          return _buildSearchResults(results);
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(Dimens.dp16),
+                child: TextField(
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(), hintText: _search),
+                  onChanged: bloc.searchQuery.add,
+                ),
+              ),
+              Expanded(
+                child: _buildSearchResults(results),
+              )
+            ],
+          );
         });
   }
 
@@ -70,7 +70,7 @@ class ArticleListScreen extends StatelessWidget {
         final article = results[index];
         return InkWell(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimens.gapDp16),
+            padding: const EdgeInsets.symmetric(horizontal: Dimens.dp16),
             child: ArticleListItem(article: article),
           ),
           onTap: () {
