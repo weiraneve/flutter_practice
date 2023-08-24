@@ -16,6 +16,7 @@ class ArticleListScreen extends StatelessWidget {
   static const String _search = 'Search ...';
   static const String _loading = 'Loading ...';
   static const String _empty = 'No Results';
+  static const String _error = 'An error occurred:';
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,20 @@ class ArticleListScreen extends StatelessWidget {
     return StreamBuilder<List<Article>?>(
         stream: bloc.articlesStream,
         builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('$_error ${snapshot.error}'),
+            );
+          }
+
           final results = snapshot.data;
+
           if (results == null) {
             return const Center(child: Text(_loading));
           } else if (results.isEmpty) {
             return const Center(child: Text(_empty));
           }
+
           return _buildSearchResults(results);
         });
   }

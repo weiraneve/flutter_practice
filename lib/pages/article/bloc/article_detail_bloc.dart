@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:rxdart/rxdart.dart';
-
 import '../data/article.dart';
 import '../data/article_client.dart';
 import 'bloc.dart';
@@ -10,19 +8,22 @@ class ArticleDetailBloc implements Bloc {
   final String id;
   final _refreshController = StreamController<void>();
   final _client = ArticleClient();
+  final _articleController = StreamController<Article?>.broadcast(); // <-- 注意这里
 
-  late Stream<Article?> articleStream;
+  Stream<Article?> get articleStream => _articleController.stream;
 
   ArticleDetailBloc({
     required this.id,
   }) {
-    articleStream = _refreshController.stream
-        .startWith(null)
-        .mapTo(id)
-        .switchMap(
-          (id) => _client.getDetailArticle(id).asStream(),
-        )
-        .asBroadcastStream();
+    _refreshController.stream.listen((_) {
+      _client.getDetailArticle(id).then((article) {
+        _articleController.add(article);
+      }).catchError((error) {
+        _articleController.addError(error);
+      });
+    });
+
+    _refreshController.add(null);
   }
 
   Future refresh() {
@@ -34,5 +35,6 @@ class ArticleDetailBloc implements Bloc {
   @override
   void dispose() {
     _refreshController.close();
+    _articleController.close();
   }
 }
