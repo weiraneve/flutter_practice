@@ -19,7 +19,7 @@ class ArticleListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(CornerRadius.S),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(Dimens.gapDp16),
+        padding: const EdgeInsets.all(Dimens.dp16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,12 +33,12 @@ class ArticleListItem extends StatelessWidget {
                   ),
                 ),
                 if (article.attributes?.cardArtworkUrl != null) ...[
-                  const SizedBox(width: Dimens.gapDp16),
+                  const SizedBox(width: Dimens.dp16),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(CornerRadius.S),
                     child: CachedNetworkImage(
-                      width: Dimens.gapDp50,
-                      height: Dimens.gapDp50,
+                      width: Dimens.dp50,
+                      height: Dimens.dp50,
                       imageUrl: article.attributes!.cardArtworkUrl!,
                     ),
                   ),
@@ -49,7 +49,7 @@ class ArticleListItem extends StatelessWidget {
               article.subscriptionType,
               style: textTheme.bodyMedium,
             ),
-            const SizedBox(height: Dimens.gapDp16),
+            const SizedBox(height: Dimens.dp16),
             if (article.attributes?.description != null)
               Text(
                 article.attributes!.description!,

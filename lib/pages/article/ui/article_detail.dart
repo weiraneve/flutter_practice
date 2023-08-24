@@ -15,25 +15,25 @@ class ArticleDetail extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: Dimens.gapDp16, vertical: Dimens.gapDp32),
+      padding: const EdgeInsets.symmetric(horizontal: Dimens.dp16, vertical: Dimens.dp32),
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (article.attributes?.cardArtworkUrl != null) ...[
-              const SizedBox(width: Dimens.gapDp16),
+              const SizedBox(width: Dimens.dp16),
               ClipRRect(
-                borderRadius: BorderRadius.circular(Dimens.gapDp8),
+                borderRadius: BorderRadius.circular(Dimens.dp8),
                 child: CachedNetworkImage(
-                  width: Dimens.gapDp150,
-                  height: Dimens.gapDp150,
+                  width: Dimens.dp150,
+                  height: Dimens.dp150,
                   imageUrl: article.attributes!.cardArtworkUrl!,
                 ),
               ),
             ],
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Dimens.gapDp10),
+                padding: const EdgeInsets.symmetric(horizontal: Dimens.dp10),
                 child: Column(
                   children: [
                     Text(
@@ -41,7 +41,7 @@ class ArticleDetail extends StatelessWidget {
                       style: textTheme.titleMedium,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: Dimens.gapDp4),
+                      padding: const EdgeInsets.symmetric(vertical: Dimens.dp4),
                       child: Text(
                         article.subscriptionType,
                         style: textTheme.titleSmall,
@@ -49,7 +49,7 @@ class ArticleDetail extends StatelessWidget {
                     ),
                     if (article.formattedReleaseDate != null)
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: Dimens.gapDp4),
+                        padding: const EdgeInsets.symmetric(vertical: Dimens.dp4),
                         child: Text(
                           article.formattedReleaseDate!,
                           style: textTheme.titleSmall,
@@ -63,7 +63,7 @@ class ArticleDetail extends StatelessWidget {
         ),
         if (article.attributes?.description != null)
           Padding(
-            padding: const EdgeInsets.only(left: Dimens.gapDp16, right: Dimens.gapDp16, top: Dimens.gapDp8),
+            padding: const EdgeInsets.only(left: Dimens.dp16, right: Dimens.dp16, top: Dimens.dp8),
             child: Text(
               article.attributes!.description!,
               style: textTheme.titleMedium,
@@ -71,7 +71,7 @@ class ArticleDetail extends StatelessWidget {
           ),
         if (article.attributes?.contributorString != null)
           Padding(
-            padding: const EdgeInsets.only(left: Dimens.gapDp16, right: Dimens.gapDp16, top: Dimens.gapDp8),
+            padding: const EdgeInsets.only(left: Dimens.dp16, right: Dimens.dp16, top: Dimens.dp8),
             child: Text(
               article.attributes!.contributorString!,
               style: textTheme.titleMedium,
@@ -79,7 +79,7 @@ class ArticleDetail extends StatelessWidget {
           ),
         if (article.attributes?.technologyTripleString != null)
           Padding(
-            padding: const EdgeInsets.only(left: Dimens.gapDp16, right: Dimens.gapDp16, top: Dimens.gapDp32),
+            padding: const EdgeInsets.only(left: Dimens.dp16, right: Dimens.dp16, top: Dimens.dp32),
             child: Text(
               article.attributes!.technologyTripleString!,
               style: textTheme.titleSmall,

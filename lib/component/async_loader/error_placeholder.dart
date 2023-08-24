@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/res/theme/dimens.dart';
 import 'package:get/get.dart';
 
 import '../../res/string/strings.dart';
@@ -26,7 +27,7 @@ enum ErrorType {
   final String imageRes;
 }
 
-const double _imageSize = 180;
+const double _imageSize = Dimens.dp180;
 
 // ignore: non_constant_identifier_names
 Widget ErrorPlaceholder({
@@ -48,7 +49,7 @@ Widget ErrorPlaceholder({
           height: _imageSize,
           color: theme.colorScheme.onBackground,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: Dimens.dp16),
         Text(
           stringRes(errorType.title),
           style: theme.textTheme.titleMedium?.copyWith(
@@ -56,14 +57,14 @@ Widget ErrorPlaceholder({
           ),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: Dimens.dp8),
         Text(
           stringRes(errorType.subTitle),
           style: theme.textTheme.labelMedium?.copyWith(
             color: theme.colorScheme.onBackground,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: Dimens.dp16),
         FilledButton(
           onPressed: onRetry,
           child: Text(stringRes(R.retry)),

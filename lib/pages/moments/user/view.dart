@@ -44,7 +44,7 @@ class UserView extends StatelessWidget {
         id: ConstraintId(_card),
         top: parent.top,
         right: parent.right,
-        margin: const EdgeInsets.only(top: Dimens.gapDp150, right: EdgeInset.S),
+        margin: const EdgeInsets.only(top: Dimens.dp150, right: EdgeInset.S),
       ),
       Text(
         user.nick ?? user.username ?? '',
