@@ -46,6 +46,7 @@ enum R {
   goFeedButtonText,
   goAnimalButtonText,
   goMomentsButtonText,
+  goArticleButtonText,
   backHomeButtonText,
   dataEmptyWarn,
   serverErrorMessage,
@@ -56,4 +57,6 @@ enum R {
   connectionErrorSubtitle,
   loadingOrParsingErrorTitle,
   loadingOrParsingErrorSubtitle,
+  articlePageTitle,
+  articleDetailTitle,
 }

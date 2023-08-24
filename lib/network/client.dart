@@ -16,7 +16,7 @@ class DioClient {
   DioClient._internal() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: Env[baseUrl] ?? '',
+        baseUrl: Env[baseUrlWanandroid] ?? '',
         connectTimeout: Duration(
             milliseconds: int.parse((Env[connectTimeout] ?? '10000'))),
         receiveTimeout: Duration(

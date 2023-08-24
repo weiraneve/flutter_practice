@@ -17,6 +17,7 @@ const Map<R, String> enUS = {
   R.goFeedButtonText: 'Go to Feed Page',
   R.goAnimalButtonText: 'Go to Animal Page',
   R.goMomentsButtonText: 'Go to Moments Page',
+  R.goArticleButtonText: 'Go to Article Page',
   R.backHomeButtonText: 'Go Back to Home',
   R.dataEmptyWarn: 'No data available.',
   R.serverErrorMessage: 'Server Error',
@@ -25,4 +26,6 @@ const Map<R, String> enUS = {
   R.connectionErrorSubtitle: 'Please check your network connection.',
   R.loadingOrParsingErrorTitle: 'Loading or Parsing Error',
   R.loadingOrParsingErrorSubtitle: 'Oops, something went wrong.',
+  R.articlePageTitle: 'Article Page',
+  R.articleDetailTitle: 'Articles Detail',
 };

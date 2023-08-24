@@ -27,6 +27,9 @@ dependencies:
   flutter_constraintlayout: ^1.6.3-stable
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  intl: ^0.17.0
+  rxdart: ^0.27.3
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:

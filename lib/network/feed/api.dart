@@ -9,7 +9,7 @@ part 'api.g.dart';
 
 @RestApi()
 abstract class FeedApi {
-  factory FeedApi(Dio dio) => _FeedApi(dio, baseUrl: Env[baseUrl]);
+  factory FeedApi(Dio dio) => _FeedApi(dio, baseUrl: Env[baseUrlWanandroid]);
 
   @GET('friend/json')
   Future<FeedResponse> getFeed([@CancelRequest() CancelToken? cancelToken]);

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_practice/pages/article/ui/article_page.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
@@ -16,6 +17,7 @@ abstract class Routes {
   static const feed = '/feed';
   static const animal = '/animal';
   static const moments = '/moments';
+  static const article = '/article';
 }
 
 abstract class AppPages {
@@ -43,6 +45,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.moments,
       page: () => MomentsPage(),
+    ),
+    GetPage(
+      name: Routes.article,
+      page: () => const ArticlePage(),
     ),
   ];
 }
