@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
+
 import '../data/article.dart';
 import '../data/article_client.dart';
 import 'bloc.dart';
@@ -7,26 +9,29 @@ import 'bloc.dart';
 class ArticleListBloc implements Bloc {
   final _client = ArticleClient();
   final _searchQueryController = StreamController<String?>();
-  final _articlesController = StreamController<List<Article>?>();
-
-  Stream<List<Article>?> get articlesStream => _articlesController.stream;
 
   Sink<String?> get searchQuery => _searchQueryController.sink;
+  late Stream<List<Article>?> articlesStream;
 
   ArticleListBloc() {
-    _searchQueryController.stream.listen((query) {
-      _client.fetchArticles(query).then((articles) {
-        _articlesController.add(articles);
-      }).catchError((error) {
-        _articlesController.addError(error);
-      });
-    });
-    _searchQueryController.add(null);
+    articlesStream = _searchQueryController.stream
+        .startWith(null)
+        .debounceTime(const Duration(milliseconds: _debounceTime))
+        .switchMap(
+            (query) => _client.fetchArticles(query).asStream().startWith(null))
+        .asBroadcastStream();
+  }
+
+  Future refresh() {
+    final future = articlesStream.first;
+    _searchQueryController.sink.add(null);
+    return future;
   }
 
   @override
   void dispose() {
     _searchQueryController.close();
-    _articlesController.close();
   }
 }
+
+const int _debounceTime = 100;

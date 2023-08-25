@@ -34,7 +34,7 @@ class ArticleListScreen extends StatelessWidget {
                 errorType: snapshot.error is Exception
                     ? ErrorType.connection
                     : ErrorType.loadingOrParsing,
-                onRetry: () {});
+                onRetry: bloc.refresh);
           }
 
           final results = snapshot.data;
