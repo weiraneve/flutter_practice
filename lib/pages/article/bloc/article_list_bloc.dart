@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:get/get.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../data/article.dart';
@@ -7,13 +8,14 @@ import '../data/article_client.dart';
 import 'bloc.dart';
 
 class ArticleListBloc implements Bloc {
-  final _client = ArticleClient();
+  final ArticleClient _client;
   final _searchQueryController = StreamController<String?>();
 
   Sink<String?> get searchQuery => _searchQueryController.sink;
   late Stream<List<Article>?> articlesStream;
 
-  ArticleListBloc() {
+  ArticleListBloc({ArticleClient? client})
+      : _client = client ?? Get.put(ArticleClient()) {
     articlesStream = _searchQueryController.stream
         .startWith(null)
         .debounceTime(const Duration(milliseconds: _debounceTime))
