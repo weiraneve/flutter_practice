@@ -46,8 +46,27 @@ lib # Flutter代码根目录
 
 - 在pages里的article部分是使用的Bloc构架。
 
+## 封装对页面异步加载代码
+这部分代码在`lib/component/async_loader`中，其目标是让页面不必处理异步加载的逻辑，只需要关注数据成功加载后的UI渲染即可。
+`AsyncLoadProcessor`负责异步加载的UI渲染，它会根据`LoadState`的状态来显示不同的UI，刷新再次请求等操作也是通过`obx`和更新`LoadState`来进行页面刷新的。
+`LoadState`的状态有以下几种：
+1. `Idle`：表示未开始加载的空状态，此时不会显示任何内容
+2. `Loading`：表示正在加载中，此时默认会显示`LoadingPlaceholder`，若`loadingView`不为空，则会显示`loadingView`
+3. `Success`：表示加载成功，此时会显示`content`中传入的Widget，一般此处传入的Widget才是页面真正的主体内容
+4. `Failure`：表示加载失败，此时默认则会显示`ErrorPlaceholder`，若`errorView`不为空，则会显示`errorView`
+
+`AsyncLoadController`是`AsyncLoadProcessor`的controller，它负责处理异步加载的逻辑。它的构造函数中需要传入一个`DataController`，
+`AsyncLoadController`并且会调用`DataController`的`fetch`方法来获取数据，并且会根据`fetch`的执行结果来更新`LoadState`的状态。
+`AutoLoadController`是通过`onInit`调用父类的`load`方法完成自动加载的，如果你不希望你的页面用自动请求数据，则无需用`AutoLoadController`。
+
+`DataController`是一个抽象类，它的子类需要实现`fetch`方法，`fetch`方法需要返回一个`Future`。
+`DataController`是页面真正主体（即上面提到的`content`）对应的controller，它虽然要实现`fetch`方法，但它不负责获取数据，
+它只用关心数据成功加载后的业务逻辑。
+
+`AsyncLoadProcessor`还有一个`useRefresh`属性来控制是否需要刷新功能。对应`AsyncLoadController`的`refresh`。
+
 ## 测试
-- 代码中有对MVVM架构controller部分和BLOC架构的bloc部分的单元测试代码
+- `/test` 目录中有对MVVM架构controller部分和BLOC架构的bloc部分的单元测试代码。
 
 ## 依赖库使用
 - 项目很多功能基于[GetX](https://pub.dev/packages/get)，如依赖注入、路由管理、状态管理(controller)等功能。
