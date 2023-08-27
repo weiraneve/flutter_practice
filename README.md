@@ -42,7 +42,7 @@ lib # Flutter代码根目录
 | 职责 | 用于渲染UI          | 用于管理状态和状态相关的逻辑 | 用于数据相关的逻辑             |
 | 构成 | UI内部状态 + Widget | 业务状态 + UI事件响应        | 数据存取、缓存策略...          |
 
-- 在pages里的feed部分也是使用的MVVM构架，只是用flutter的provider代替了Getx的controller
+- 在pages里的feed部分也是使用的MVVM构架，只是用flutter的provider代替了Getx的controller。
 
 - 在pages里的article部分是使用的Bloc构架。
 
@@ -64,6 +64,9 @@ lib # Flutter代码根目录
 它只用关心数据成功加载后的业务逻辑。
 
 `AsyncLoadProcessor`还有一个`useRefresh`属性来控制是否需要刷新功能。对应`AsyncLoadController`的`refresh`。
+
+封装结构大致如图:
+![pPUNn0J.md.png](https://s1.ax1x.com/2023/08/27/pPUNn0J.md.png)
 
 ## 测试
 - `/test` 目录中有对MVVM架构controller部分和BLOC架构的bloc部分的单元测试代码。
