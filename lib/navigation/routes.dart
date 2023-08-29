@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_practice/pages/article/ui/article_page.dart';
 import 'package:get/get_navigation/src/router_report.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/animal/page.dart';
 import '../pages/count/page.dart';
 import '../pages/feed/page.dart';
 import '../pages/home_page.dart';
 import '../pages/moments/page.dart';
+import '../pages/timer/bloc/bloc.dart';
+import '../pages/timer/view/timer_page.dart';
 
 abstract class Routes {
   static const home = '/home';
@@ -16,6 +19,7 @@ abstract class Routes {
   static const animal = '/animal';
   static const moments = '/moments';
   static const article = '/article';
+  static const timer = '/timer';
 }
 
 abstract class AppPages {
@@ -44,6 +48,13 @@ abstract class AppPages {
       name: Routes.article,
       page: () => const ArticlePage(),
     ),
+    GetPage(
+      name: Routes.timer,
+      page: () => Provider<StopWatchBloc>(
+        create: (context) => StopWatchBloc(),
+        child: const TimerPage(),
+      ),
+    )
   ];
 }
 

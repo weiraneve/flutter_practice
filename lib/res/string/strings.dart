@@ -46,6 +46,7 @@ enum R {
   goAnimalButtonText,
   goMomentsButtonText,
   goArticleButtonText,
+  goTimerButtonText,
   backHomeButtonText,
   dataEmptyWarn,
   serverErrorMessage,

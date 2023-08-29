@@ -50,6 +50,13 @@ class HomePage extends StatelessWidget {
               },
               child: Text(stringRes(R.goArticleButtonText)),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(Routes.timer);
+              },
+              child: Text(stringRes(R.goTimerButtonText)),
+            ),
           ],
         ),
       ),

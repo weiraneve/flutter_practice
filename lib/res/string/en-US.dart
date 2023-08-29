@@ -17,6 +17,7 @@ const Map<R, String> enUS = {
   R.goAnimalButtonText: 'Go to Animal Page',
   R.goMomentsButtonText: 'Go to Moments Page',
   R.goArticleButtonText: 'Go to Article Page',
+  R.goTimerButtonText: 'Go to Timer Page',
   R.backHomeButtonText: 'Go Back to Home',
   R.dataEmptyWarn: 'No data available.',
   R.serverErrorMessage: 'Server Error',
