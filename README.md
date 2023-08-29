@@ -23,7 +23,8 @@ lib # Flutter代码根目录
 │    │    └── ui        # ui层代码    
 │    ├── count          # 简单加数页面
 │    ├── feed           # 数据页面和点击进入webview
-│    └── moments        # 类朋友圈页面
+│    ├── moments        # 类朋友圈页面
+│    └── timer          # 计数页面
 ├── res                 # 资源相关
 │    ├── string         # 字符串资源
 │    └── theme          # 主题样式资源
@@ -44,7 +45,7 @@ lib # Flutter代码根目录
 
 - 在pages里的feed部分也是使用的MVVM构架，只是用flutter的provider代替了Getx的controller。
 
-- 在pages里的article部分是使用的Bloc构架。
+- 在pages里的article、timer部分是使用的Bloc构架。
 
 ## 封装对页面异步加载代码
 这部分代码在`lib/component/async_loader`中，其目标是让页面不必处理异步加载的逻辑，只需要关注数据成功加载后的UI渲染即可。
