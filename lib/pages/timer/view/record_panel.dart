@@ -7,6 +7,9 @@ class RecordPanel extends StatelessWidget {
 
   const RecordPanel({super.key, required this.record});
 
+  final EdgeInsets itemPadding =
+      const EdgeInsets.symmetric(horizontal: 20, vertical: 4);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,16 +17,12 @@ class RecordPanel extends StatelessWidget {
       child: DefaultTextStyle(
         style: const TextStyle(fontFamily: 'IBMPlexMono', color: Colors.black),
         child: ListView.builder(
-          // reverse: true,
           itemBuilder: _buildItemByIndex,
           itemCount: record.length,
         ),
       ),
     );
   }
-
-  final EdgeInsets itemPadding =
-      const EdgeInsets.symmetric(horizontal: 20, vertical: 4);
 
   Widget _buildItemByIndex(BuildContext context, int index) {
     int reverseIndex = (record.length - 1) - index;
@@ -39,12 +38,16 @@ class RecordPanel extends StatelessWidget {
             style: TextStyle(color: indexColor),
           ),
         ),
-        const Spacer(flex: 1,),
+        const Spacer(
+          flex: 1,
+        ),
         Text(durationToString(record[reverseIndex].record)),
-        const Spacer(flex: 4,),
+        const Spacer(
+          flex: 4,
+        ),
         Padding(
           padding: itemPadding,
-          child: Text("+" + durationToString(record[reverseIndex].addition)),
+          child: Text("+${durationToString(record[reverseIndex].addition)}"),
         ),
       ],
     );

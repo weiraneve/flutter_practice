@@ -18,6 +18,6 @@ class _UpdateDuration extends StopWatchEvent {
   _UpdateDuration(this.duration);
 }
 
-class RecordeStopWatch extends StopWatchEvent {
-  const RecordeStopWatch();
+class RecordStopWatch extends StopWatchEvent {
+  const RecordStopWatch();
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/component/base_scaffold.dart';
 import 'package:flutter_practice/pages/timer/view/stopwatch_widget.dart';
-import 'package:flutter_practice/pages/timer/view/timer_tool.dart';
+import 'package:flutter_practice/pages/timer/view/timer_tools.dart';
 
 import '../bloc/bloc.dart';
 import 'record_panel.dart';
 
 class TimerPage extends StatefulWidget {
-  const TimerPage({Key? key}) : super(key: key);
+  const TimerPage({super.key});
 
   @override
   State<TimerPage> createState() => _TimerPageState();
@@ -31,6 +31,24 @@ class _TimerPageState extends State<TimerPage> {
     );
   }
 
+  void onReset() => stopWatchBloc.add(const ResetStopWatch());
+
+  void onRecord() => stopWatchBloc.add(const RecordStopWatch());
+
+  void toggle() => stopWatchBloc.add(const ToggleStopWatch());
+
+  Widget buildTools() {
+    return BlocBuilder<StopWatchBloc, StopWatchState>(
+      buildWhen: (p, n) => p.type != n.type,
+      builder: (_, state) => TimerTools(
+        state: state.type,
+        onRecord: onRecord,
+        onReset: onReset,
+        toggle: toggle,
+      ),
+    );
+  }
+
   Widget buildStopwatchPanel() {
     double radius = MediaQuery.of(context).size.shortestSide / 2 * 0.75;
     return BlocBuilder<StopWatchBloc, StopWatchState>(
@@ -44,24 +62,6 @@ class _TimerPageState extends State<TimerPage> {
     );
   }
 
-  Widget buildTools() {
-    return BlocBuilder<StopWatchBloc, StopWatchState>(
-      buildWhen: (p, n) => p.type != n.type,
-      builder: (_, state) => TimerTool(
-        state: state.type,
-        onRecorder: onRecorder,
-        onReset: onReset,
-        toggle: toggle,
-      ),
-    );
-  }
-
-  void onReset() => stopWatchBloc.add(const ResetStopWatch());
-
-  void onRecorder() => stopWatchBloc.add(const RecordeStopWatch());
-
-  void toggle() => stopWatchBloc.add(const ToggleStopWatch());
-
   Widget buildRecordPanel() {
     return Expanded(
       child: BlocBuilder<StopWatchBloc, StopWatchState>(
@@ -72,25 +72,4 @@ class _TimerPageState extends State<TimerPage> {
       ),
     );
   }
-}
-
-class Right2LeftRouter<T> extends PageRouteBuilder<T> {
-  final Widget child;
-  final int durationMs;
-  final Curve curve;
-
-  Right2LeftRouter(
-      {required this.child,
-      this.durationMs = 200,
-      this.curve = Curves.fastOutSlowIn})
-      : super(
-            transitionDuration: Duration(milliseconds: durationMs),
-            pageBuilder: (ctx, a1, a2) => child,
-            transitionsBuilder: (ctx, a1, a2, child) => SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(1.0, 0.0),
-                    end: const Offset(0.0, 0.0),
-                  ).animate(CurvedAnimation(parent: a1, curve: curve)),
-                  child: child,
-                ));
 }

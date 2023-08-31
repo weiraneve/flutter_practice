@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../bloc/bloc.dart';
 
-class TimerTool extends StatelessWidget {
+class TimerTools extends StatelessWidget {
   final StopWatchType state;
   final VoidCallback? onReset;
   final VoidCallback? toggle;
-  final VoidCallback? onRecorder;
+  final VoidCallback? onRecord;
 
-  const TimerTool({
+  const TimerTools({
     super.key,
     required this.state,
-    this.onRecorder,
+    this.onRecord,
     this.onReset,
     this.toggle,
   });
@@ -44,7 +44,7 @@ class TimerTool extends StatelessWidget {
           ),
           if (state != StopWatchType.initial)
             GestureDetector(
-              onTap: onRecorder,
+              onTap: onRecord,
               child: Icon(Icons.flag_outlined, size: 28, color: flagColor),
             ),
         ],
