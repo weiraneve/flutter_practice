@@ -11,14 +11,13 @@ class StopwatchWidget extends StatelessWidget {
   final Color scaleColor;
 
   const StopwatchWidget(
-      {Key? key,
+      {super.key,
       required this.radius,
       required this.duration,
       this.secondDuration = Duration.zero,
-      this.scaleColor = const Color(0xffDADADA),
+      this.scaleColor = Colors.grey,
       this.textStyle,
-      this.themeColor})
-      : super(key: key);
+      this.themeColor});
 
   TextStyle get commonStyle => TextStyle(
         fontSize: radius / 3.2,
@@ -32,7 +31,7 @@ class StopwatchWidget extends StatelessWidget {
     TextStyle style = textStyle ?? commonStyle;
     Color themeColor = this.themeColor ?? Theme.of(context).primaryColor;
     return CustomPaint(
-      painter: StopwatchPainter(
+      painter: _StopwatchPainter(
           radius: radius,
           duration: duration,
           secondDuration: secondDuration,
@@ -48,7 +47,7 @@ const double _kScaleWidthRate = 0.4 / 10;
 const _kIndicatorRadiusRate = 0.2 / 10;
 const _kStrokeWidthRate = 0.8 / 135.0;
 
-class StopwatchPainter extends CustomPainter {
+class _StopwatchPainter extends CustomPainter {
   final Duration duration;
   final Duration secondDuration;
 
@@ -57,7 +56,7 @@ class StopwatchPainter extends CustomPainter {
   final Color scaleColor;
   final TextStyle textStyle;
 
-  StopwatchPainter({
+  _StopwatchPainter({
     required this.duration,
     required this.secondDuration,
     required this.themeColor,
@@ -155,7 +154,7 @@ class StopwatchPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant StopwatchPainter oldDelegate) {
+  bool shouldRepaint(covariant _StopwatchPainter oldDelegate) {
     return oldDelegate.duration != duration ||
         oldDelegate.textStyle != textStyle ||
         oldDelegate.themeColor != themeColor ||

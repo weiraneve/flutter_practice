@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/component/base_scaffold.dart';
 import 'package:flutter_practice/pages/timer/view/stopwatch_widget.dart';
 import 'package:flutter_practice/pages/timer/view/timer_tools.dart';
+import 'package:flutter_practice/res/theme/dimens.dart';
 
 import '../bloc/bloc.dart';
 import 'record_panel.dart';
@@ -22,7 +23,7 @@ class _TimerPageState extends State<TimerPage> {
     return BaseScaffold(
       body: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: Dimens.dp32),
           buildStopwatchPanel(),
           buildRecordPanel(),
           buildTools()
@@ -50,7 +51,7 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   Widget buildStopwatchPanel() {
-    double radius = MediaQuery.of(context).size.shortestSide / 2 * 0.75;
+    double radius = MediaQuery.of(context).size.shortestSide / 3;
     return BlocBuilder<StopWatchBloc, StopWatchState>(
       buildWhen: (p, n) => p.duration != n.duration,
       builder: (_, state) => StopwatchWidget(
