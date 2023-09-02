@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/component/base_scaffold.dart';
 import 'package:flutter_practice/pages/timer/view/stopwatch_widget.dart';
 import 'package:flutter_practice/pages/timer/view/timer_tools.dart';
+import 'package:flutter_practice/res/string/strings.dart';
 import 'package:flutter_practice/res/theme/dimens.dart';
 
 import '../bloc/bloc.dart';
@@ -21,6 +22,7 @@ class _TimerPageState extends State<TimerPage> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      title: stringRes(R.timerTitle),
       body: Column(
         children: [
           const SizedBox(height: Dimens.dp32),

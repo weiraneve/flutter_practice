@@ -28,4 +28,5 @@ const Map<R, String> zhCN = {
   R.loadingOrParsingErrorSubtitle: 'Oops, something went wrong.',
   R.articlePageTitle: 'Article Page',
   R.articleDetailTitle: 'Articles Detail',
+  R.timerTitle: 'Timer Page',
 };

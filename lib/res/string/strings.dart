@@ -59,4 +59,5 @@ enum R {
   loadingOrParsingErrorSubtitle,
   articlePageTitle,
   articleDetailTitle,
+  timerTitle,
 }
