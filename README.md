@@ -2,6 +2,32 @@
 
 一个[Flutter](https://flutter.dev/) 练习项目，包含了一些移动端工程化的一些常用能力，可以上手使用和学习。
 
+## 界面展示
+
+- home界面，多个button点击之后可以进入不同的page。
+
+<img src="./images/home.png" alt="home界面" width="30%" />
+
+- feed界面，直接请求某网站api，并且支持对网址点击之后跳转webview界面。
+
+<img src="./images/feed.png" alt="feed界面" width="30%" />
+
+- animal界面，自动加载猫猫狗狗图，并且支持下拉刷新界面和数据。
+
+<img src="./images/animal.png" alt="animal界面" width="30%" />
+
+- moments界面，类似朋友圈ui的界面。
+
+<img src="./images/moments.png" alt="moments界面" width="30%" />
+
+- article界面，加载某网站数据，点击具体的文章之后进入具体文章界面。
+
+<img src="./images/article.png" alt="article界面" width="30%" />
+
+- timer界面，记时间的秒表界面。
+
+<img src="./images/timer.png" alt="timer界面" width="30%" />
+
 ## 包结构
 
 ```
