@@ -11,8 +11,6 @@ import '../pages/feed/repository.dart';
 class GlobalBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(DioClient(), permanent: true);
-
     Get.lazyPut(() => FeedApi(findDio()), fenix: true);
     Get.lazyPut(() => FeedRepository(feedApi: findFeedApi()), fenix: true);
     Get.lazyPut(() => AnimalApi(findDio()), fenix: true);
