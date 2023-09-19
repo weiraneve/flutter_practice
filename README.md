@@ -103,6 +103,7 @@ lib # Flutter代码根目录
 - 网络部分使用的是，[Dio](https://pub.dev/packages/dio) + [retrofit](https://pub.dev/packages/retrofit) +
 [json_serializable](https://pub.dev/packages/json_serializable)的组合。
 - 项目中持久化使用[hive](https://pub.dev/packages/hive)，没具体使用。
+- 项目中集成了 [flutter_ume:Flutter 应用内调试工具平台](https://github.com/bytedance/flutter_ume) 目前只集成了对应的dio网络部分插件。
 
 ## 其他
 - 一些环境变量放在根目录下的config目录的文件之中。
