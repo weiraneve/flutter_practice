@@ -6,33 +6,20 @@ import 'package:provider/provider.dart';
 import '../../component/base_scaffold.dart';
 import 'provider.dart';
 
-class FeedListPage extends StatelessWidget {
+class FeedListPage extends StatefulWidget {
   const FeedListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => FeedListPageProvider(),
-      child: const FeedListPageState(),
-    );
-  }
+  State<FeedListPage> createState() => _FeedListPageState();
 }
 
-class FeedListPageState extends StatefulWidget {
-  const FeedListPageState({super.key});
+class _FeedListPageState extends State<FeedListPage> {
+  FeedListPageProvider provider = FeedListPageProvider();
 
-  @override
-  State<FeedListPageState> createState() => _FeedListPageState();
-}
-
-class _FeedListPageState extends State<FeedListPageState> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<FeedListPageProvider>(context, listen: false).fetchFeeds();
-    });
+    provider.fetchFeeds();
   }
 
   @override
@@ -42,51 +29,52 @@ class _FeedListPageState extends State<FeedListPageState> {
       body: Center(
         child: RefreshIndicator(
           onRefresh: () async {
-            await Provider.of<FeedListPageProvider>(context, listen: false)
-                .refreshFeeds();
+            provider.refreshFeeds();
           },
-          child: Consumer<FeedListPageProvider>(
-            builder: (context, provider, child) {
-              if (provider.isLoading) {
-                return _LoadingSingleChildScrollView();
-              }
+          child: ChangeNotifierProvider<FeedListPageProvider>(
+              create: (BuildContext context) => provider,
+              child: Consumer<FeedListPageProvider>(
+                builder: (context, provider, _) {
+                  if (provider.isLoading) {
+                    return _LoadingSingleChildScrollView();
+                  }
 
-              if (provider.errorMessage != null) {
-                _ErrorSingleChildScrollView(provider.errorMessage!);
-              }
+                  if (provider.errorMessage != null) {
+                    _ErrorSingleChildScrollView(provider.errorMessage!);
+                  }
 
-              if (provider.feeds.isEmpty) {
-                return _EmptyChildScrollView();
-              }
+                  if (provider.feeds.isEmpty) {
+                    return _EmptyChildScrollView();
+                  }
 
-              return ListView.builder(
-                itemCount: provider.feeds.length,
-                itemBuilder: (context, index) {
-                  var feed = provider.feeds[index];
-                  return ListTile(
-                    title: Text(feed.name ?? ''),
-                    subtitle: InkWell(
-                      child: Text(
-                        feed.link ?? '',
-                        style: const TextStyle(
-                          color: Colors.blue, // make it look like a link
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                WebView(url: feed.link ?? ''),
+                  return ListView.builder(
+                    itemCount: provider.feeds.length,
+                    itemBuilder: (context, index) {
+                      var feed = provider.feeds[index];
+                      return ListTile(
+                        title: Text(feed.name ?? ''),
+                        subtitle: InkWell(
+                          child: Text(
+                            feed.link ?? '',
+                            style: const TextStyle(
+                              color: Colors.blue, // make it look like a link
+                            ),
                           ),
-                        );
-                      },
-                    ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    WebView(url: feed.link ?? ''),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
                   );
                 },
-              );
-            },
-          ),
+              )),
         ),
       ),
     );
