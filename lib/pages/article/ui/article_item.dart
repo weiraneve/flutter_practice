@@ -6,8 +6,8 @@ import '../../../res/theme/dimens.dart';
 import '../../../res/theme/shape.dart';
 import '../data/article.dart';
 
-class ArticleListItem extends StatelessWidget {
-  const ArticleListItem({required this.article, super.key});
+class ArticleItem extends StatelessWidget {
+  const ArticleItem({required this.article, super.key});
 
   final Article article;
 
