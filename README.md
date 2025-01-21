@@ -106,4 +106,4 @@ lib # Flutter代码根目录
 - 项目中集成了 [flutter_ume:Flutter 应用内调试工具平台](https://github.com/bytedance/flutter_ume) 目前只集成了对应的dio网络部分插件。
 
 ## 其他
-- 一些环境变量放在根目录下的config目录的文件之中。
+- 一些环境变量放在根目录下的config目录的文件之中。访问一些接口需要梯子。
